@@ -92,7 +92,7 @@ expertsmarketing-website/
 │   └── fonts/
 ├── robots.txt
 ├── sitemap.xml
-├── vercel.json          # redirects + headers (replaces .htaccess) — added in Phase 2
+├── vercel.json          # redirects + headers (replaces .htaccess) — created, not yet tested/deployed
 ├── docs/
 │   ├── PROJECT_ARCHITECTURE.md
 │   ├── MIGRATION_PLAN.md
@@ -118,9 +118,15 @@ to `expertsmarketing-website`. They are not part of the live site:
 - `updated-website.zip` and any other archive/backup files sitting in
   the Plesk file manager.
 - Any `.bak` files or dated backup copies.
-- Root `favicon.ico` — confirmed unreferenced by any of the 9 live pages
-  (all pages use `assets/images/favicon.svg` instead); excluded as an
-  unused Plesk-era placeholder.
+
+**Not excluded — kept intentionally:** `favicon.ico` at the repo root is
+committed and tracked. None of the 9 live pages reference it directly —
+they all declare `<link rel="icon" type="image/svg+xml"
+href="assets/images/favicon.svg">`, which is the actual active favicon
+— but `favicon.ico` is retained as a harmless fallback (some older
+browsers and crawlers request `/favicon.ico` automatically regardless
+of the declared `<link rel="icon">`). `vercel.json` includes an explicit
+`Cache-Control` header rule for it.
 
 Note: the local working copy available during the August 2026 audit did
 not contain `plesk-stat/`, `test/`, or `updated-website.zip`. These are
@@ -128,6 +134,18 @@ included in the exclusion list per Arthur's instruction in case they
 exist directly on the Plesk server outside the synced folder — this
 should be confirmed by checking the Plesk file manager directly before
 Phase 1 export (see MIGRATION_PLAN.md §3).
+
+### Redirect catch-all warning
+
+`vercel.json` (created 2026-08-01, see MIGRATION_PLAN.md §5 and
+VERCEL_SETUP_PLAN.md §5) ends its `redirects` array with two broad
+catch-all rules translated from the original `.htaccess`:
+`/:lang(en|es|fr)/:path*` and `/:term(lexico|lexique|lexicon)/:path*`,
+both redirecting to `/`. **Do not create future pages under `/en`,
+`/es`, `/fr`, `/lexico`, `/lexique`, or `/lexicon`** without first
+reviewing these two rules — anything under those path prefixes that
+isn't explicitly matched by a more specific rule ahead of them in the
+array will be silently redirected to the homepage.
 
 ## 5. Integration Architecture
 

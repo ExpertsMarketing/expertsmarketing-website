@@ -66,16 +66,21 @@ edge," matching the current no-build-step reality of the site.
     execution time.
   - **No changes to MX, SPF, DKIM, or other TXT records.**
 
-## 5. `vercel.json` — Redirects and Headers (not yet created)
+## 5. `vercel.json` — Redirects and Headers
 
-To be authored and tested in Migration Phase 2, translating every rule
-in `docs/legacy-plesk.htaccess` on a line-by-line basis. Structurally:
+Created (2026-08-01) as part of Migration Phase 2, translating every one
+of the 40 legacy `.htaccess` redirect rules against
+`docs/legacy-plesk.htaccess` on a line-by-line basis. It has **not**
+been tested on a Preview deployment or connected to any domain yet.
+Structurally:
 
 ```json
 {
   "redirects": [
-    { "source": "/es/contacto", "destination": "/contact.html", "permanent": true }
-    // ...all 40 legacy .htaccess redirect rules translated 1:1
+    { "source": "/es/contacto", "destination": "/contact.html", "statusCode": 301 },
+    { "source": "/es/contacto/", "destination": "/contact.html", "statusCode": 301 },
+    { "source": "/:lang(en|es|fr)/:path*", "destination": "/", "statusCode": 301 },
+    { "source": "/:term(lexico|lexique|lexicon)/:path*", "destination": "/", "statusCode": 301 }
   ],
   "headers": [
     {
@@ -88,17 +93,45 @@ in `docs/legacy-plesk.htaccess` on a line-by-line basis. Structurally:
     },
     {
       "source": "/assets/styles.css",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }]
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000" }]
+    },
+    {
+      "source": "/favicon.ico",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000" }]
     }
   ]
 }
 ```
 
-This file will live in the repo root and is tested on Preview
-deployments before it ever affects production (it takes effect on every
-deployment, preview or production, since it's part of the committed
-code — which is exactly why Preview testing catches redirect mistakes
-before go-live). **Not created as part of this documentation pass.**
+Key decisions baked into the real file:
+
+- **`"statusCode": 301` on every rule**, not Vercel's `"permanent": true"`
+  shorthand — `permanent: true` actually issues an HTTP 308, not 301.
+  301 was chosen to preserve the original `.htaccess` behavior
+  (`RedirectMatch 301`) as exactly as possible.
+- **No global `"trailingSlash"` setting** — that would be a site-wide
+  behavior change. Instead, each of the 38 non-catch-all rules has two
+  explicit `redirects` entries (bare path + trailing-slash variant),
+  mirroring the original `/?$` optional-trailing-slash pattern per
+  rule rather than site-wide. This is why the file contains 78 redirect
+  entries, not 40.
+- **The two catch-all rules stay last** in the array
+  (`/:lang(en|es|fr)/:path*` and
+  `/:term(lexico|lexique|lexicon)/:path*`), exactly matching their
+  position as the last (least specific) rules in the original
+  `.htaccess`. **Do not add future pages under `/en`, `/es`, `/fr`,
+  `/lexico`, `/lexique`, or `/lexicon`** without reviewing these two
+  rules first — anything under those prefixes not explicitly listed
+  above them will be redirected to `/`.
+
+This file lives in the repo root and is tested on Preview deployments
+before it ever affects production (it takes effect on every deployment,
+preview or production, since it's part of the committed code — which is
+exactly why Preview testing catches redirect mistakes before go-live).
+Testing must include query-string passthrough checks
+(`/es/contacto?utm_source=test`, `/en/lexicon/seo?utm_source=test`) in
+addition to the plain redirect-target checks — see
+MIGRATION_PLAN.md §5 for the full testing method.
 
 ## 6. Environment Variables
 

@@ -142,28 +142,71 @@ the site, collapsing to current pages. These map directly to
 ```json
 {
   "redirects": [
-    { "source": "/es/contacto", "destination": "/contact.html", "permanent": true },
-    { "source": "/en/lexicon/seo", "destination": "/services/seo.html", "permanent": true },
-    { "source": "/(en|es|fr)/:path*", "destination": "/", "permanent": true },
-    { "source": "/(lexico|lexique|lexicon)/:path*", "destination": "/", "permanent": true }
+    { "source": "/es/contacto", "destination": "/contact.html", "statusCode": 301 },
+    { "source": "/es/contacto/", "destination": "/contact.html", "statusCode": 301 },
+    { "source": "/en/lexicon/seo", "destination": "/services/seo.html", "statusCode": 301 },
+    { "source": "/en/lexicon/seo/", "destination": "/services/seo.html", "statusCode": 301 },
+    { "source": "/:lang(en|es|fr)/:path*", "destination": "/", "statusCode": 301 },
+    { "source": "/:term(lexico|lexique|lexicon)/:path*", "destination": "/", "statusCode": 301 }
   ]
 }
 ```
 
-Every one of the 40 `.htaccess` redirect lines needs an explicit corresponding
-entry — this should be done as a literal line-by-line translation
-against `docs/legacy-plesk.htaccess`, then diffed so nothing is silently
-dropped. (`vercel.json` itself is created in Phase 2, not in this
-documentation pass.)
+**Status code decision:** `vercel.json` uses `"statusCode": 301` on every
+rule, not Vercel's shorthand `"permanent": true`. `permanent: true`
+would actually issue an HTTP **308**, not a 301 — functionally
+equivalent for SEO, but the explicit `statusCode: 301` was chosen to
+preserve the original `.htaccess` behavior (`RedirectMatch 301`) as
+exactly as possible rather than substitute an adjacent status code.
+
+**Trailing slash handling:** `vercel.json` does **not** set a global
+`"trailingSlash"` value, because that would be a site-wide behavior
+change affecting every route, not just these 40 legacy paths. Instead,
+each of the 38 non-catch-all rules has two explicit entries in
+`vercel.json` — one for the bare path and one with a trailing slash —
+directly mirroring the original `.htaccess` `/?$` (optional trailing
+slash) pattern on a rule-by-rule basis. This brings the total redirect
+entry count in `vercel.json` to 78 (38 rules × 2 variants, plus the 2
+catch-all rules, which already match nested paths inherently and don't
+need a separate trailing-slash variant).
+
+**Catch-all warning:** the two catch-all rules
+(`/:lang(en|es|fr)/:path*` and `/:term(lexico|lexique|lexicon)/:path*`)
+are kept at the bottom of the `redirects` array, exactly as they were
+last (and least specific) in the original `.htaccess`. **Do not create
+future pages under `/en`, `/es`, `/fr`, `/lexico`, `/lexique`, or
+`/lexicon`** without first reviewing these two rules — any new page
+under those path prefixes will be silently redirected to `/` unless the
+catch-alls are updated or a more specific rule is added ahead of them.
+
+Every one of the 40 `.htaccess` redirect lines has an explicit
+corresponding entry in `vercel.json` — this was done as a literal
+line-by-line translation against `docs/legacy-plesk.htaccess`.
+`vercel.json` now exists in the repo root (created in Phase 2) but has
+**not** been tested on a Preview deployment or connected to any
+domain yet.
 
 **B. Caching/compression headers** (`mod_expires`, `mod_deflate`) — map
-to `vercel.json`'s `headers` array using `Cache-Control`. Vercel also
-gzip/Brotli-compresses automatically at the edge, so the `mod_deflate`
-equivalent is effectively free and doesn't need explicit configuration.
+to `vercel.json`'s `headers` array using `Cache-Control`, covering
+`assets/fonts/`, `assets/images/`, `assets/styles.css`, and
+`favicon.ico`. Vercel also gzip/Brotli-compresses automatically at the
+edge, so the `mod_deflate` equivalent is effectively free and doesn't
+need explicit configuration.
 
-Testing method: build a checklist of all 40 source paths, hit each one
-against the Preview deployment, and confirm the resulting redirect
-target and status code (301) match the current Plesk behavior exactly.
+Testing method: build a checklist of all 40 source paths (78 entries
+counting trailing-slash variants), hit each one against the Preview
+deployment, and confirm the resulting redirect target and status code
+(301) match the current Plesk behavior exactly. In addition to the
+redirect targets themselves, explicitly test query-string passthrough
+using at least:
+- `/es/contacto?utm_source=test` → should land on
+  `/contact.html?utm_source=test`
+- `/en/lexicon/seo?utm_source=test` → should land on
+  `/services/seo.html?utm_source=test`
+
+and spot-check that non-redirected paths (`/contact.html`,
+`/services/seo.html`, `/about.html`) are unaffected by the two
+catch-all rules.
 
 ## 6. Contact Form Validation Strategy (post-migration)
 

@@ -1,0 +1,432 @@
+{
+  "redirects": [
+    {
+      "source": "/es/contacto",
+      "destination": "/contact.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/contacto/",
+      "destination": "/contact.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/nous-contacter",
+      "destination": "/contact.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/nous-contacter/",
+      "destination": "/contact.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/contact-us",
+      "destination": "/contact.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/contact-us/",
+      "destination": "/contact.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/lexicon/seo",
+      "destination": "/services/seo.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/lexicon/seo/",
+      "destination": "/services/seo.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique/seo-referencement-naturel",
+      "destination": "/services/seo.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique/seo-referencement-naturel/",
+      "destination": "/services/seo.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/lexicon/sea",
+      "destination": "/services/paid-search-social.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/lexicon/sea/",
+      "destination": "/services/paid-search-social.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique/sea-referencement-payant",
+      "destination": "/services/paid-search-social.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique/sea-referencement-payant/",
+      "destination": "/services/paid-search-social.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/lexico/sea",
+      "destination": "/services/paid-search-social.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/lexico/sea/",
+      "destination": "/services/paid-search-social.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/lexicon/geofencing",
+      "destination": "/services/paid-search-social.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/lexicon/geofencing/",
+      "destination": "/services/paid-search-social.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique/geofencing",
+      "destination": "/services/paid-search-social.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique/geofencing/",
+      "destination": "/services/paid-search-social.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/lexico/geofencing",
+      "destination": "/services/paid-search-social.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/lexico/geofencing/",
+      "destination": "/services/paid-search-social.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/lexicon/display-campaign",
+      "destination": "/services/paid-search-social.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/lexicon/display-campaign/",
+      "destination": "/services/paid-search-social.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/lexico/social-media",
+      "destination": "/services/social-media.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/lexico/social-media/",
+      "destination": "/services/social-media.html",
+      "statusCode": 301
+    },
+    {
+      "source": "/es",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/en",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/services",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/services/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/services/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/servicios",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/servicios/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/white-paper",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/white-paper/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/livre-blanc",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/livre-blanc/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/libro-blanco",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/libro-blanco/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique/captation-mails",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique/captation-mails/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique/application-dynamique",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique/application-dynamique/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/lexicon/push-notification",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/lexicon/push-notification/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique/application-vitrine",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique/application-vitrine/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/lexico/notificationes-push",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/lexico/notificationes-push/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique/e-merchandising",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique/e-merchandising/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique/push-notification",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique/push-notification/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique/consulting-mobile",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique/consulting-mobile/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/lexico/mobile-consulting",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/lexico/mobile-consulting/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/lexicon/mobile-consulting",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/lexicon/mobile-consulting/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/lexicon/digital-marketing-consulting",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/en/lexicon/digital-marketing-consulting/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/lexico/app-discovery-aplicacion",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/lexico/app-discovery-aplicacion/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique/consulting-marketing-digital",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique/consulting-marketing-digital/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/lexico/consultoria-marketing-digital",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/lexico/consultoria-marketing-digital/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/lexico/e-merchandising-ancillary-revenue",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/lexico/e-merchandising-ancillary-revenue/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/lexico",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/es/lexico/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/fr/lexique/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/:lang(en|es|fr)/:path*",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/:term(lexico|lexique|lexicon)/:path*",
+      "destination": "/",
+      "statusCode": 301
+    }
+  ],
+  "headers": [
+    {
+      "source": "/assets/fonts/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/assets/styles.css",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000"
+        }
+      ]
+    },
+    {
+      "source": "/favicon.ico",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000"
+        }
+      ]
+    }
+  ]
+}
