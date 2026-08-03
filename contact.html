@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <title>Contact — Experts Marketing</title>
+  <meta name="description" content="Start with a high-level visibility audit. We reply within 24h." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css" />
+  <!-- hCaptcha -->
+  <script src="https://js.hcaptcha.com/1/api.js?hl=en" async defer></script>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">
+        <img src="assets/images/logo.svg" alt="Experts Marketing" />
+      </a>
+      <nav class="nav-links">
+        <a href="services/seo.html">SEO</a>
+        <a href="services/geo-aeo.html">GEO / AEO</a>
+        <a href="services/paid-search-social.html">Paid</a>
+        <a href="services/social-media.html">Social</a>
+        <a href="results.html">Results</a>
+        <a href="about.html">About</a>
+        <a class="btn btn-primary nav-cta active" href="contact.html">Talk to us</a>
+      </nav>
+      <button class="nav-burger" type="button"
+              aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+      <nav class="nav-mobile" id="mobile-menu" aria-label="Mobile navigation"></nav>
+  </header>
+
+  <section class="hero hero-bg-towers" style="padding-bottom: 40px;">
+    <div class="container">
+      <span class="eyebrow">Get started</span>
+      <h1>Start with a<br/><em>visibility audit.</em></h1>
+      <p class="lead">
+        A high-level diagnostic of where your brand stands across search
+        and AI engines, plus three concrete recommendations to start
+        closing the gap. No obligation, no pricing surprises.
+      </p>
+    </div>
+  </section>
+
+  <!-- FORM + WHAT YOU GET -->
+  <section style="padding-top: 30px;">
+    <div class="container">
+      <div class="two-col" style="align-items: start;">
+
+        <!-- FORM -->
+        <div class="card" style="padding: 40px;">
+          <h3 style="margin-bottom: 24px;">Tell us a bit about you</h3>
+                    <form class="form" id="contact-form">
+            <div class="row">
+              <div>
+                <label for="name">Your name</label>
+                <input id="name" name="name" type="text" required />
+              </div>
+              <div>
+                <label for="company">Company</label>
+                <input id="company" name="company" type="text" required />
+              </div>
+            </div>
+            <div class="row">
+              <div>
+                <label for="email">Work email</label>
+                <input id="email" name="email" type="email" required />
+              </div>
+              <div>
+                <label for="role">Your role</label>
+                <input id="role" name="role" type="text" placeholder="e.g. Head of Growth" />
+              </div>
+            </div>
+            <div>
+              <label for="goal">Main goal</label>
+              <select id="goal" name="goal">
+                <option>SEO — grow organic traffic</option>
+                <option>GEO / AEO — get cited by AI engines</option>
+                <option>Paid Search &amp; Paid Social — lower CAC</option>
+                <option>Social Media — grow audience</option>
+                <option>Not sure yet / want to explore</option>
+              </select>
+            </div>
+            <div>
+              <label for="describe">Describe your need</label>
+              <textarea id="describe" name="describe" placeholder="What are you trying to solve? Where are you stuck?"></textarea>
+            </div>
+            <div class="h-captcha" data-sitekey="572c1656-5f92-45b0-912e-b444acfca7f4"></div>
+            <!-- Honeypot anti-spam (invisibile agli umani) -->
+            <input type="text" name="_honeypot" style="display:none" tabindex="-1" autocomplete="off" />
+            <div id="form-message" style="display:none;margin-top:12px;padding:12px;border-radius:8px;"></div>
+            <button type="submit" id="form-submit" class="btn btn-primary btn-arrow" style="align-self:flex-start;">Request audit</button>
+          </form>
+          <script>
+          const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxLxZq67uziezBJ7omidr8Sx_3DTt6ZguT2GM_C0Ql5BlKq3o98URhlUnKJzx5kZiU/exec';
+          document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const btn  = document.getElementById('form-submit');
+            const captcha = form.querySelector('[name="h-captcha-response"]');
+            if (form._honeypot.value) return;
+            if (!captcha || !captcha.value) { showMsg('Please complete the captcha.', 'error'); return; }
+            btn.disabled = true; btn.textContent = 'Sending…';
+            try {
+              const res  = await fetch(APPS_SCRIPT_URL, { method:'POST', body: JSON.stringify({
+                name: form.name.value, company: form.company.value, email: form.email.value,
+                role: form.role.value, goal: form.goal.value, describe: form.describe.value,
+                'h-captcha-response': captcha.value }) });
+              const data = await res.json();
+              if (data.status === 'success') {
+                form.reset(); if (window.hcaptcha) hcaptcha.reset();
+                showMsg('✓ Sent — we’ll reply within 24h.', 'success');
+              } else { throw new Error(data.message || 'Server error'); }
+            } catch(err) { showMsg('Something went wrong. Please try again.', 'error'); }
+            btn.disabled = false; btn.textContent = 'Request audit';
+          });
+          function showMsg(text, type) {
+            const el = document.getElementById('form-message');
+            el.textContent = text; el.style.display = 'block';
+            el.style.background = type==='success' ? '#d1fae5' : '#fee2e2';
+            el.style.color      = type==='success' ? '#065f46' : '#991b1b';
+          }
+          </script>
+        </div>
+
+        <!-- WHAT YOU GET -->
+        <div>
+          <span class="eyebrow">What you get</span>
+          <h2 style="margin-bottom: 24px;">A real diagnostic.<br/><em>Not a sales deck.</em></h2>
+
+          <div class="grid" style="gap: 18px;">
+            <div class="card" style="padding: 24px;">
+              <h3 style="font-size: 19px; margin-bottom: 8px;">Brand visibility snapshot</h3>
+              <p style="font-size: 15px; margin: 0;">A high-level read on how your brand currently appears across Google, ChatGPT, Perplexity, Gemini and AI Overviews.</p>
+            </div>
+            <div class="card" style="padding: 24px;">
+              <h3 style="font-size: 19px; margin-bottom: 8px;">Competitor benchmark</h3>
+              <p style="font-size: 15px; margin: 0;">Where two or three of your key competitors are winning, and where the gap is widest.</p>
+            </div>
+            <div class="card" style="padding: 24px;">
+              <h3 style="font-size: 19px; margin-bottom: 8px;">Three concrete recommendations</h3>
+              <p style="font-size: 15px; margin: 0;">The specific moves we'd make first if we were running your channel — prioritized by impact and effort.</p>
+            </div>
+            <div class="card" style="padding: 24px; background: var(--bg-alt);">
+              <h3 style="font-size: 19px; margin-bottom: 8px;">A real conversation</h3>
+              <p style="font-size: 15px; margin: 0;">A 30-minute call to walk through the audit. We listen first, talk second. No pressure to sign anything.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- BARCELONA TOUCH -->
+  <section class="section-tight">
+    <div class="container">
+      <div class="img-block img-wide">
+        <img src="assets/images/bcn-towers.webp" alt="Barcelona — Hotel Porta Fira and Telefónica towers" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ALTERNATIVE CTAS -->
+  <section style="padding-top: 0;">
+    <div class="container">
+      <span class="eyebrow">Other ways to start</span>
+      <h2 style="margin-bottom: 40px;">Not ready for an audit?<br/><em>Start lighter.</em></h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3 style="margin-bottom: 8px;">Identify your AI marketing potential</h3>
+          <p>A 20-minute conversation to map where AI fits — or doesn't yet — for your specific brand and category.</p>
+          <a class="btn btn-ghost btn-arrow" style="margin-top: 18px; font-size: 14px;" href="#">Book a 20-min call</a>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom: 8px;">Talk with an AI marketing expert</h3>
+          <p>A working session — bring a question, leave with a perspective. Useful when you already know what you don't know.</p>
+          <a class="btn btn-ghost btn-arrow" style="margin-top: 18px; font-size: 14px;" href="#">Book a 30-min session</a>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom: 8px;">Just send a note</h3>
+          <p>Sometimes a question is just a question. Drop us a line and we'll reply with what we'd actually do — or who you should ask if it's not us.</p>
+          <a class="btn btn-ghost btn-arrow" style="margin-top: 18px; font-size: 14px;" href="#">Send a message</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="brand">
+          <img src="assets/images/logo.svg" alt="Experts Marketing" style="height: 40px; width: auto;" />
+          <p>Growth marketing for brands that want to win in search — and in what comes next. Built in Barcelona.</p>
+        </div>
+        <div>
+          <h5>Services</h5>
+          <ul>
+            <li><a href="services/seo.html">SEO</a></li>
+            <li><a href="services/geo-aeo.html">GEO / AEO</a></li>
+            <li><a href="services/paid-search-social.html">Paid Search &amp; Social</a></li>
+            <li><a href="services/social-media.html">Social Media</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Agency</h5>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="results.html">Results</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Get in touch</h5>
+          <ul>
+            <li><a href="contact.html">Book a call</a></li>
+            <li><a href="contact.html">Visibility audit</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="legal">
+        <span>© Experts Marketing · Barcelona, Spain</span>
+        <span>Privacy · Imprint</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    var nav    = document.querySelector('.nav');
+    var burger = document.querySelector('.nav-burger');
+    var menu   = document.getElementById('mobile-menu');
+    if (!nav || !burger || !menu) return;
+
+    document.querySelectorAll('.nav-links a').forEach(function (link) {
+      menu.appendChild(link.cloneNode(true));
+    });
+
+    function setOpen(open) {
+      burger.classList.toggle('is-open', open);
+      menu.classList.toggle('is-open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+    function isOpen() { return menu.classList.contains('is-open'); }
+
+    burger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setOpen(!isOpen());
+    });
+    document.addEventListener('click', function (e) {
+      if (isOpen() && !nav.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && isOpen()) { setOpen(false); burger.focus(); }
+    });
+    menu.addEventListener('click', function (e) {
+      if (e.target.closest('a')) setOpen(false);
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 760 && isOpen()) setOpen(false);
+    });
+  })();
+  </script>
+</body>
+</html>

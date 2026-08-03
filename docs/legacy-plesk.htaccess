@@ -1,0 +1,83 @@
+RewriteEngine On
+
+RedirectMatch 301 "^/es/contacto/?$" "/contact.html"
+RedirectMatch 301 "^/fr/nous-contacter/?$" "/contact.html"
+RedirectMatch 301 "^/en/contact-us/?$" "/contact.html"
+RedirectMatch 301 "^/en/lexicon/seo/?$" "/services/seo.html"
+RedirectMatch 301 "^/fr/lexique/seo-referencement-naturel/?$" "/services/seo.html"
+RedirectMatch 301 "^/en/lexicon/sea/?$" "/services/paid-search-social.html"
+RedirectMatch 301 "^/fr/lexique/sea-referencement-payant/?$" "/services/paid-search-social.html"
+RedirectMatch 301 "^/es/lexico/sea/?$" "/services/paid-search-social.html"
+RedirectMatch 301 "^/en/lexicon/geofencing/?$" "/services/paid-search-social.html"
+RedirectMatch 301 "^/fr/lexique/geofencing/?$" "/services/paid-search-social.html"
+RedirectMatch 301 "^/es/lexico/geofencing/?$" "/services/paid-search-social.html"
+RedirectMatch 301 "^/en/lexicon/display-campaign/?$" "/services/paid-search-social.html"
+RedirectMatch 301 "^/es/lexico/social-media/?$" "/services/social-media.html"
+RedirectMatch 301 "^/es/?$" "/"
+RedirectMatch 301 "^/en/?$" "/"
+RedirectMatch 301 "^/fr/services/?$" "/"
+RedirectMatch 301 "^/en/services/?$" "/"
+RedirectMatch 301 "^/es/servicios/?$" "/"
+RedirectMatch 301 "^/en/white-paper/?$" "/"
+RedirectMatch 301 "^/fr/livre-blanc/?$" "/"
+RedirectMatch 301 "^/es/libro-blanco/?$" "/"
+RedirectMatch 301 "^/fr/lexique/captation-mails/?$" "/"
+RedirectMatch 301 "^/fr/lexique/application-dynamique/?$" "/"
+RedirectMatch 301 "^/en/lexicon/push-notification/?$" "/"
+RedirectMatch 301 "^/fr/lexique/application-vitrine/?$" "/"
+RedirectMatch 301 "^/es/lexico/notificationes-push/?$" "/"
+RedirectMatch 301 "^/fr/lexique/e-merchandising/?$" "/"
+RedirectMatch 301 "^/fr/lexique/push-notification/?$" "/"
+RedirectMatch 301 "^/fr/lexique/consulting-mobile/?$" "/"
+RedirectMatch 301 "^/es/lexico/mobile-consulting/?$" "/"
+RedirectMatch 301 "^/en/lexicon/mobile-consulting/?$" "/"
+RedirectMatch 301 "^/en/lexicon/digital-marketing-consulting/?$" "/"
+RedirectMatch 301 "^/es/lexico/app-discovery-aplicacion/?$" "/"
+RedirectMatch 301 "^/fr/lexique/consulting-marketing-digital/?$" "/"
+RedirectMatch 301 "^/es/lexico/consultoria-marketing-digital/?$" "/"
+RedirectMatch 301 "^/es/lexico/e-merchandising-ancillary-revenue/?$" "/"
+RedirectMatch 301 "^/es/lexico/?$" "/"
+RedirectMatch 301 "^/fr/lexique/?$" "/"
+RedirectMatch 301 "^/(en|es|fr)/.*$" "/"
+RedirectMatch 301 "^/(lexico|lexique|lexicon)/.*$" "/"
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+# 1. ATTIVA LA COMPRESSIONE GZIP
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/x-javascript application/json image/svg+xml
+</IfModule>
+
+# 2. ATTIVA IL CACHING DEI FILE (BROWSER CACHING)
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+
+    # Immagini (incluso WebP e SVG)
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+
+    # CSS e JavaScript
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType text/javascript "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType application/x-javascript "access plus 1 year"
+
+    # Font
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>

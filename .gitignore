@@ -1,0 +1,15 @@
+.DS_Store
+Thumbs.db
+.vercel
+node_modules/
+*.log
+*.bak
+*.zip
+
+# Legacy Plesk artifacts — not part of the live site (see docs/PROJECT_ARCHITECTURE.md)
+css/
+img/
+plesk-stat/
+test/
+updated-website.zip
+.htaccess
