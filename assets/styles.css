@@ -810,12 +810,18 @@ section { padding: clamp(80px, 10vw, 140px) 0; }
 .kpi-link {
   display: inline-block;
   margin-top: 12px;
-  font-size: 13px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--accent);
   text-decoration: none;
 }
 .kpi-link:hover { text-decoration: underline; }
+
+/* ---------- KPI link — centered variant (GEO/AEO + SEO case-study links) ---------- */
+.kpi-link-center {
+  display: block;
+  text-align: center;
+}
 
 /* ---------- Footer LinkedIn link ---------- */
 .footer-linkedin {
@@ -1033,4 +1039,20 @@ section { padding: clamp(80px, 10vw, 140px) 0; }
 }
 .hero .eyebrow {
   color: #0369a1 !important; /* Un azzurro scuro che si legge perfettamente sullo sfondo della hero */
+}
+
+/* ============================================================
+   Batch 1 — Iteration 3 quick wins
+   ============================================================ */
+/* SEO page: keep "SEO Content Optimization" title on one line so its
+   list aligns with the other two service columns. */
+.card-title-fit {
+  white-space: nowrap;
+  font-size: clamp(16px, 1.6vw, 24px);
+}
+
+/* GEO/AEO page: reduce the gap between the KPI block and the
+   "OUR GEO SERVICES" section below it. */
+.geo-kpi-section {
+  padding-bottom: clamp(30px, 4vw, 50px);
 }
