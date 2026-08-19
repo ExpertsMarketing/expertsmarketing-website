@@ -2,11 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  <!-- Google Tag Manager (loaded after page load / on first interaction) -->
+  <script>(function(w,d,s,l,i){
+  w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var done=false;
+  function load(){if(done)return;done=true;
+    var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+    j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+    f.parentNode.insertBefore(j,f);}
+  function schedule(){'requestIdleCallback' in w?w.requestIdleCallback(load,{timeout:2500}):setTimeout(load,1500);}
+  ['scroll','pointerdown','keydown','touchstart'].forEach(function(e){
+    w.addEventListener(e,load,{passive:true,once:true});});
+  d.readyState==='complete'?schedule():w.addEventListener('load',schedule);
   })(window,document,'script','dataLayer','GTM-5XZ8778');</script>
   <!-- End Google Tag Manager -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,7 +22,8 @@
   <meta name="description" content="A Barcelona-based agency running SEO, paid media, social, and AI visibility for brands that want to win in search and what comes next." />
 
   <link rel="preload" href="assets/fonts/inter-v20-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/fraunces-v38-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/fraunces-v38-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <style>@font-face{font-family:'Fraunces';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/fraunces-v38-latin-regular.woff2') format('woff2')}@font-face{font-family:'Fraunces';font-style:italic;font-weight:400;font-display:swap;src:url('assets/fonts/fraunces-v38-latin-italic.woff2') format('woff2')}@font-face{font-family:'Fraunces';font-style:normal;font-weight:500;font-display:swap;src:url('assets/fonts/fraunces-v38-latin-500.woff2') format('woff2')}@font-face{font-family:'Fraunces';font-style:italic;font-weight:500;font-display:swap;src:url('assets/fonts/fraunces-v38-latin-500italic.woff2') format('woff2')}@font-face{font-family:'Fraunces';font-style:normal;font-weight:600;font-display:swap;src:url('assets/fonts/fraunces-v38-latin-600.woff2') format('woff2')}@font-face{font-family:'Fraunces';font-style:italic;font-weight:600;font-display:swap;src:url('assets/fonts/fraunces-v38-latin-600italic.woff2') format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('assets/fonts/inter-v20-latin-regular.woff2') format('woff2')}@font-face{font-family:'Inter';font-style:italic;font-weight:400;font-display:swap;src:url('assets/fonts/inter-v20-latin-italic.woff2') format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url('assets/fonts/inter-v20-latin-500.woff2') format('woff2')}@font-face{font-family:'Inter';font-style:italic;font-weight:500;font-display:swap;src:url('assets/fonts/inter-v20-latin-500italic.woff2') format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url('assets/fonts/inter-v20-latin-600.woff2') format('woff2')}@font-face{font-family:'Inter';font-style:italic;font-weight:600;font-display:swap;src:url('assets/fonts/inter-v20-latin-600italic.woff2') format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url('assets/fonts/inter-v20-latin-700.woff2') format('woff2')}@font-face{font-family:'Inter';font-style:italic;font-weight:700;font-display:swap;src:url('assets/fonts/inter-v20-latin-700italic.woff2') format('woff2')}</style>
 
   <style>
     :root{--bg:#fff;--bg-alt:#f3f7fc;--bg-soft:#eaf2ff;--surface:#fff;--ink:#0a1f44;--ink-soft:#374151;--ink-mute:#4b5563;--line:#e6ecf3;--line-strong:#cfdbeb;--accent:#4a8cf7;--accent-deep:#1d4ed8;--accent-soft:#dbeafe;--accent-glow:rgba(29,78,216,.18);--navy-card:#0a1f44;--navy-deep:#061534;--font-sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;--font-serif:"Fraunces","Cormorant Garamond",Georgia,serif;--max:1280px;--pad:clamp(20px,5vw,64px);--radius:18px;--radius-sm:10px;--radius-lg:28px}
@@ -120,16 +128,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
 
         <div class="hero-slide">
-          <img src="assets/images/bcn-encants.webp" loading="lazy" alt="Barcelona Encants" style="width: 100%; height: 100%; object-fit: cover;">
+          <img data-src="assets/images/bcn-encants.webp" alt="Barcelona Encants" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="hero-slide">
-          <img src="assets/images/bcn-skyscrapers.webp" loading="lazy" alt="Barcelona Skyscrapers" style="width: 100%; height: 100%; object-fit: cover;">
+          <img data-src="assets/images/bcn-skyscrapers.webp" alt="Barcelona Skyscrapers" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="hero-slide">
-          <img src="assets/images/bcn-museu-disseny.webp" loading="lazy" alt="Barcelona Museu Disseny" style="width: 100%; height: 100%; object-fit: cover;">
+          <img data-src="assets/images/bcn-museu-disseny.webp" alt="Barcelona Museu Disseny" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
         <div class="hero-slide">
-          <img src="assets/images/bcn-mix.webp" loading="lazy" alt="Barcelona Mix" style="width: 100%; height: 100%; object-fit: cover;">
+          <img data-src="assets/images/bcn-mix.webp" alt="Barcelona Mix" style="width: 100%; height: 100%; object-fit: cover;">
         </div>
       </div>
       <div class="hero-overlay"></div>
@@ -320,6 +328,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </footer>
 
+  <script>
+  (function(){
+    function slides(){
+      document.querySelectorAll('.hero-slide img[data-src]').forEach(function(img){
+        img.src=img.getAttribute('data-src');img.removeAttribute('data-src');
+      });
+    }
+    document.readyState==='complete'?slides():window.addEventListener('load',slides);
+  })();
+  </script>
   <script>
   (function(){
     var nav=document.querySelector('.nav');

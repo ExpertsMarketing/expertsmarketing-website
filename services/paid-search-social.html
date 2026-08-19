@@ -2,20 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  <!-- Google Tag Manager (loaded after page load / on first interaction) -->
+  <script>(function(w,d,s,l,i){
+  w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+  var done=false;
+  function load(){if(done)return;done=true;
+    var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+    j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+    f.parentNode.insertBefore(j,f);}
+  function schedule(){'requestIdleCallback' in w?w.requestIdleCallback(load,{timeout:2500}):setTimeout(load,1500);}
+  ['scroll','pointerdown','keydown','touchstart'].forEach(function(e){
+    w.addEventListener(e,load,{passive:true,once:true});});
+  d.readyState==='complete'?schedule():w.addEventListener('load',schedule);
   })(window,document,'script','dataLayer','GTM-5XZ8778');</script>
   <!-- End Google Tag Manager -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
   <title>Paid Search &amp; Paid Social — Experts Marketing</title>
   <meta name="description" content="Performance media on Google, Meta and LinkedIn — built around your unit economics." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="../assets/fonts/inter-v20-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/fraunces-v38-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <style>@font-face{font-family:'Fraunces';font-style:normal;font-weight:400;font-display:swap;src:url('../assets/fonts/fraunces-v38-latin-regular.woff2') format('woff2')}@font-face{font-family:'Fraunces';font-style:italic;font-weight:400;font-display:swap;src:url('../assets/fonts/fraunces-v38-latin-italic.woff2') format('woff2')}@font-face{font-family:'Fraunces';font-style:normal;font-weight:500;font-display:swap;src:url('../assets/fonts/fraunces-v38-latin-500.woff2') format('woff2')}@font-face{font-family:'Fraunces';font-style:italic;font-weight:500;font-display:swap;src:url('../assets/fonts/fraunces-v38-latin-500italic.woff2') format('woff2')}@font-face{font-family:'Fraunces';font-style:normal;font-weight:600;font-display:swap;src:url('../assets/fonts/fraunces-v38-latin-600.woff2') format('woff2')}@font-face{font-family:'Fraunces';font-style:italic;font-weight:600;font-display:swap;src:url('../assets/fonts/fraunces-v38-latin-600italic.woff2') format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('../assets/fonts/inter-v20-latin-regular.woff2') format('woff2')}@font-face{font-family:'Inter';font-style:italic;font-weight:400;font-display:swap;src:url('../assets/fonts/inter-v20-latin-italic.woff2') format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url('../assets/fonts/inter-v20-latin-500.woff2') format('woff2')}@font-face{font-family:'Inter';font-style:italic;font-weight:500;font-display:swap;src:url('../assets/fonts/inter-v20-latin-500italic.woff2') format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url('../assets/fonts/inter-v20-latin-600.woff2') format('woff2')}@font-face{font-family:'Inter';font-style:italic;font-weight:600;font-display:swap;src:url('../assets/fonts/inter-v20-latin-600italic.woff2') format('woff2')}@font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url('../assets/fonts/inter-v20-latin-700.woff2') format('woff2')}@font-face{font-family:'Inter';font-style:italic;font-weight:700;font-display:swap;src:url('../assets/fonts/inter-v20-latin-700italic.woff2') format('woff2')}</style>
   <link rel="stylesheet" href="../assets/styles.css" />
 </head>
 <body>
