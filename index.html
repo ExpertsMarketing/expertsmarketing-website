@@ -60,7 +60,7 @@
     .nav-mobile.is-open{max-height:440px;visibility:visible;border-top-color:var(--line)}
     .nav-mobile a{display:block;padding:14px var(--pad);font-size:15px;font-weight:500;color:var(--ink);border-bottom:1px solid var(--line);transition:color .15s ease}
     .nav-mobile .nav-cta{display:inline-flex;margin:16px var(--pad) 20px;border-bottom:none;color:#fff}
-    .hero{padding:clamp(90px,12vw,170px) 0 clamp(70px,9vw,120px);position:relative;overflow:hidden;min-height:600px}
+    .hero{padding:clamp(40px,6vw,80px) 0 clamp(30px,4vw,60px);position:relative;overflow:hidden;min-height:420px}
     .hero-carousel{position:absolute;inset:0;z-index:0}
     .hero-carousel-track{position:absolute;inset:0;width:100%;height:100%}
     .hero-slide{position:absolute;inset:0;width:100%;height:100%;opacity:0;animation:heroFade 20s infinite;will-change:opacity;}
@@ -70,10 +70,10 @@
     .hero>.container{position:relative;z-index:1}
     .hero .eyebrow{color:#e2e8f0;font-weight:700;}.hero .eyebrow::before{background:#fff}
     .hero h1{color:#fff}.hero h1 em{color:var(--accent)}
-    .hero .lead{color:#fff;margin-top:30px;font-size:22px;text-shadow:0 1px 8px rgba(0,0,0,.55)}
-    .hero .actions{margin-top:44px;display:flex;gap:14px;flex-wrap:wrap}
+    .hero .lead{color:#fff;margin-top:16px;margin-bottom:0;font-size:clamp(14px,1vw,16px);text-shadow:0 1px 8px rgba(0,0,0,.55)}
+    .hero .actions{margin-top:24px;display:flex;gap:14px;flex-wrap:wrap}
     .hero .btn-ghost{color:#fff;border-color:rgba(255,255,255,.45)}.hero .btn-ghost:hover{background:#fff;color:var(--ink);border-color:#fff}
-    .hero-meta{display:flex;gap:22px;margin-top:64px;font-size:15px;color:#fff;letter-spacing:.04em;flex-wrap:wrap}
+    .hero-meta{display:flex;gap:22px;margin-top:28px;font-size:15px;color:#fff;letter-spacing:.04em;flex-wrap:wrap}
     .hero-meta a{color:inherit;text-decoration:none;opacity:.85;transition:opacity .2s}
     .hero-glass{background:rgba(6,21,52,.55);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-radius:16px;border:1px solid rgba(255,255,255,.08);width:auto;padding:28px 40px}
 
@@ -88,8 +88,7 @@
 
     @media(max-width:760px){.nav-links a:not(.nav-cta){display:none}.nav-burger{display:flex}.nav-mobile{display:block}.hero-glass{padding:32px 28px}.hero-meta{display:grid!important;grid-template-columns:1fr 1fr!important;gap:12px 8px!important;margin-top:32px!important}.hero-meta span{display:none!important}}
   </style>
-  <link rel="preload" href="assets/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/styles.css"></noscript>
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
